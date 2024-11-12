@@ -9,10 +9,10 @@ const Page: React.FC = () => {
     <>
       <Header>
         <Button>
-          <Link href="/authview">Login</Link>
+          <Link href="/authview">Exit</Link>
         </Button>
         <Button>
-          <Link href="/additem">Sign Up</Link>
+          <Link href="/additem">Logout</Link>
         </Button>
       </Header>
 

@@ -1,25 +1,41 @@
-
-
 .intro {
-    
-    /* Add shadows to create the "card" effect */
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin-left: 200px;
-    margin-right: 200px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-  }
-  
-  /* On mouse-over, add a deeper shadow */
-  .intro:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-  }
-  
-  /* Add some padding inside the card container */
-  .container {
-    padding: 2px 16px;
-  }
-  .textbox {
-    text-align: center;
-  }
+  margin: 0 auto;
+  padding: 40px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: black;
+  color: white;
+  max-width: 800px;
+  text-align: left;
+  border: 9px solid #F4EFE6;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  outline: 10px solid transparent; 
+  outline-offset: 10px; 
+  box-shadow: 0 0 0 5px black;
+}
+
+.intro:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3);
+}
+
+.textbox h1 {
+  font-size: 64px;
+  font-family: 'Tourney';
+  margin-bottom: 0px;
+  color: #F4EFE6;
+}
+
+.textbox h3 {
+  font-size: 20px;
+  font-family: 'Tourney';
+  margin-bottom: 70px;
+  letter-spacing: 8px;
+  color: #F4EFE6;
+}
+
+.textbox p{
+  color: #F4EFE6;
+}

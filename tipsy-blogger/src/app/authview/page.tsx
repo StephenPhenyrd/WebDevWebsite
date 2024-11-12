@@ -15,8 +15,8 @@ export default function Authview() {
     return(
     <div>
     <Header>
+        <Button><Link href="/additem">Add New Review</Link></Button>
         <Button><Link href="/">Logout</Link></Button>
-        <Button><Link href="/additem">Add Item</Link></Button>
     </Header> 
 
     <h1>Posts</h1>
