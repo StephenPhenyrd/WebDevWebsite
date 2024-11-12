@@ -13,7 +13,7 @@ const initialItems = [
 
 export default function Authview() {
     return(
-    <div>
+    <div className="background">
     <Header>
         <Button><Link href="/additem">Add New Review</Link></Button>
         <Button><Link href="/">Logout</Link></Button>
