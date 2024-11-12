@@ -1,0 +1,91 @@
+
+.form-background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-image: url('../img/formbackground.webp');
+    background-repeat: repeat;
+    background-size: auto;
+    opacity: 0.3;
+  }
+  
+  .form-container {
+    position: relative;
+    width: 800px;
+    padding: 60px;
+    background-color: #C8D9E6;
+    border-radius: 25px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  .close-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    background: none;
+    border: none;
+    font-size: 36px;
+    cursor: pointer;
+  }
+  
+  .form-title {
+    text-align: center;
+    font-size: 68px;
+    margin-bottom: 40px;
+    font-family: 'Tourney';
+    color: black;
+  }
+  
+  .form-fields {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-fields label {
+    margin-top: 25px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .form-fields input,
+  .form-fields textarea {
+    margin-top: 15px;
+    padding: 20px;
+    font-size: 24px;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    color: black;
+    background-color: #F4EFE6;
+  }
+  
+  .submit-button {
+    margin-top: 40px;
+    padding: 20px;
+    font-size: 24px;
+    border: none;
+    border-radius: 12px;
+    background-color: #F4EFE6;
+    color: black;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-button:hover {
+    background-color: #152238;
+    color:#F4EFE6;
+  }
+  
