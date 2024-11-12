@@ -11,8 +11,8 @@ export default function Item(props: DummyProps) {
     return(
     <div className={styles.card}>
         <Image src={props.image} alt="dummyPic" width = "40" height = "40" />
-        <h3>{props.title}</h3>
-        <p>{props.text}</p>
+        <h3><strong>Location: </strong>{props.title}</h3>
+        <p><strong>Review: </strong> {props.text}</p>
     </div>
     );
 }

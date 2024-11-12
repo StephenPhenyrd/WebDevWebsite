@@ -14,19 +14,20 @@ const initialItems = [
 
 export default function Authview() {
     return(
-    <div>
+    <>
+    <Header>
+            <Button><Link href="/additem">Add New Review</Link></Button>
+            <Button><Link href="/">Logout</Link></Button>
+        </Header> 
+    <div className="form-background">
         <div className="background-wrapper">
 
         </div>
         <div>
-        <Header>
-            <Button><Link href="/additem">Add New Review</Link></Button>
-            <Button><Link href="/">Logout</Link></Button>
-        </Header> 
+        
 
-            <h1>Posts</h1>
 
-            <div>   
+            <div className="item-container">   
                 {initialItems.map((item, index) => (
                 <div key={index}>
                 {item}
@@ -38,6 +39,6 @@ export default function Authview() {
     </div>
 
 
-
+    </>
     );
 }
