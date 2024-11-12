@@ -2,6 +2,7 @@ import Header from "../components/Header"
 import Button from "../components/Button"
 import Link from "next/link"
 import Item from "../components/Item"
+import "./authview.css"
 
 
 
@@ -13,20 +14,26 @@ const initialItems = [
 
 export default function Authview() {
     return(
-    <div className="background">
-    <Header>
-        <Button><Link href="/additem">Add New Review</Link></Button>
-        <Button><Link href="/">Logout</Link></Button>
-    </Header> 
+    <div>
+        <div className="background-wrapper">
 
-    <h1>Posts</h1>
+        </div>
+        <div>
+        <Header>
+            <Button><Link href="/additem">Add New Review</Link></Button>
+            <Button><Link href="/">Logout</Link></Button>
+        </Header> 
 
-        <div>   
-            {initialItems.map((item, index) => (
-            <div key={index}>
+            <h1>Posts</h1>
+
+            <div>   
+                {initialItems.map((item, index) => (
+                <div key={index}>
                 {item}
+                </div>
+            
+                ))}
             </div>
-            ))}
         </div> 
     </div>
 
