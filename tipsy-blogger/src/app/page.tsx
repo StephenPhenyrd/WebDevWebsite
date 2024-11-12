@@ -3,24 +3,14 @@ import Button from "./components/Button";
 import Link from "next/link";
 import React from 'react';
 import styles from './components/IntroCard.module.css';
+import IntroCard from "./components/IntroCard";
+import Item from "./components/Item"
 
 // Dummy array with initial items
 const initialItems = [
-  {
-    image: 'https://via.placeholder.com/150',
-    title: 'Item 1',
-    text: 'Description for Item 1',
-  },
-  {
-    image: 'https://via.placeholder.com/150',
-    title: 'Item 2',
-    text: 'Description for Item 2',
-  },
-  {
-    image: 'https://via.placeholder.com/150',
-    title: 'Item 3',
-    text: 'Description for Item 3',
-  },
+  <Item image="" title="1785" text="Great Drinks!"/>,
+  <Item image="" title="Magnolia's" text="Amazing Environment"/>,
+  <Item image="" title="Bourbon" text="Fun People"/>
 ];
 
 export default function Home() {
@@ -31,8 +21,10 @@ export default function Home() {
         <Button><Link href="/authview">Login</Link></Button>
         <Button><Link href="/additem">Sign Up</Link></Button>
       </Header>
+      <IntroCard />
 
-      {/* IntroCard section to display item components */}
+      
+      {/* IntroCard section to display item components 
       <div>
         {initialItems.map((item, index) => (
           <div key={index} className={styles.intro}>
@@ -44,6 +36,9 @@ export default function Home() {
           </div>
         ))}
       </div>
+*/}
     </div>
+    
+    
   );
 }
