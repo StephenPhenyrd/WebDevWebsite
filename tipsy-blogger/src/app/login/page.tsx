@@ -2,36 +2,42 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
+import { signIn, signOut } from "../auth";
 
 export default function LoginPage() {
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(''); // State for error message
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(''); // Clear any previous error
 
-    const accountExists = mockCheckAccount(username, password);
+    try {
+        const res = await signIn('credentials', {
+            redirect: false,
+            callbackUrl: '/authview', // Optional, where to redirect on success
+            username, // Your custom credentials field
+            password, // Your custom credentials field
+        });
+          
 
-    if (accountExists) {
-      router.push('/authview');
-    } else {
-      alert('Account does not exist. Please register.');
+      if (res?.error) {
+        // If the response contains an error, update the error state
+        setError(res.error || 'Invalid login credentials.');
+      } else {
+        // Successful login
+        router.push('/authview');
+      }
+    } catch (error) {
+      // Handle unexpected errors
+      setError('An unexpected error occurred. Please try again.');
     }
   };
 
   const handleRegisterRedirect = () => {
     router.push('/signup');
-  };
-
-  const mockCheckAccount = (username: string, password: string): boolean => {
-    const existingAccounts = [
-      { username: 'user1', password: 'pass1' },
-      { username: 'user2', password: 'pass2' },
-    ];
-    return existingAccounts.some(
-      (account) => account.username === username && account.password === password
-    );
   };
 
   return (
@@ -79,6 +85,11 @@ export default function LoginPage() {
               required
             />
           </div>
+          {error && (
+            <div style={{ color: 'red', fontSize: '14px', marginBottom: '15px', textAlign: 'center' }}>
+              {error}
+            </div>
+          )}
           <button
             type="submit"
             style={{
