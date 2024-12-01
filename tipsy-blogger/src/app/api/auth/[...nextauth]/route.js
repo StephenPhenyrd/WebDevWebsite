@@ -1,31 +1,45 @@
+import { connectMongoDB } from "@/src/app/lib/mongodb";
+import User from "@/src/app/models/User";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-
+import bcrypt from 'bcryptjs'
 const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        // Implement your user authentication logic here
-        const user = { id: "1", name: "Admin" };
+       
+        const  {username, password } = credentials;
+        try {
+          await connectMongoDB();
+          const user = await User.findOne( { username });
+          console.log(user.password)
+          console.log(user.username)
+          if (user) {
+            const passwordMatch = await bcrypt.compare( password, user.password )
+            if (!passwordMatch) {
+              return null
+            }
 
-        if (user) {
-          return user; // Return user object if successful
+            return user
+          }
+          return null;
+
+        } catch (error) {
+          console.log('error' , error)
         }
-        return null; // Return null if authentication fails
+        
       },
     }),
   ],
   session: {
-    strategy: "jwt", // Use JWT for stateless authentication
+    strategy: "jwt", 
   },
   secret: process.env.NEXTAUTH_SECRET,
   pages: {
-    signIn: "/", // Redirect here if not authenticated
+    signIn: "/", 
   },
 };
 

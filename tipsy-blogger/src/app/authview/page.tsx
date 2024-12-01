@@ -17,7 +17,7 @@ export default function Authview() {
     <>
     <Header>
             <Button><Link href="/additem">Add New Review</Link></Button>
-            <Button><Link href="/">Logout</Link></Button>
+            <Button><Link href="/logout">Logout</Link></Button>
         </Header> 
     <div className="form-background">
         <div className="background-wrapper">
