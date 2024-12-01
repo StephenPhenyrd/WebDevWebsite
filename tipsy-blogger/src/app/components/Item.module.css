@@ -1,15 +1,29 @@
 .card {
-    background-color: #F4EFE6;
-    border: solid #C8D9E6 5px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 280px;
-    height: 280px;
-    margin-left: 100px;
-    color:black;
-    border-radius: 25px;
-    margin-top: 100px;
-    padding-top: 20px;
-}
+        background-color: #F4EFE6;
+        border: solid #C8D9E6 5px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        width: 280px;
+        height: auto; /* Adjust height dynamically */
+        margin-left: 20px; /* Add spacing from the left */
+        padding: 20px; /* Add padding around the content */
+        color: black;
+        border-radius: 25px;
+        margin-top: 20px; /* Add spacing between cards */
+ }
 
-
+.button {
+    background-color: #C8D9E6; /* Light blue background */
+    color: black; /* Text color */
+    border: none; /* No border */
+    padding: 8px 16px; /* Padding for size */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 14px; /* Font size */
+    margin: 10px 0 0 10px; /* Adds spacing around the button */
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .button:hover {
+    background-color: #A0C4D6; /* Darker blue on hover */
+  }
 
