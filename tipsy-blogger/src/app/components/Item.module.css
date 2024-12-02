@@ -1,3 +1,4 @@
+
 .card {
         background-color: #F4EFE6;
         border: solid #C8D9E6 5px;
@@ -27,3 +28,18 @@
     background-color: #A0C4D6; /* Darker blue on hover */
   }
 
+  .button {
+    background-color: #ffcccc; /* Light red */
+    color: black;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    margin: 5px 0;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #ff6666; /* Darker red on hover */
+  }

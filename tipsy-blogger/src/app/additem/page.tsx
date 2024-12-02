@@ -46,6 +46,7 @@ export default function Additem() {
     setReviewValue(event.target.value);
   };
 
+  
   const submitHandler = async (event: FormEvent) => {
     event.preventDefault();
     setLoading(true);
@@ -94,6 +95,48 @@ export default function Additem() {
       setLoading(false);
     }
   };
+  
+  /*
+  const submitHandler = async (event: FormEvent) => {
+    event.preventDefault();
+    setLoading(true);
+  
+    const inputInfo = {
+      id: searchParams.get("id") ? parseInt(searchParams.get("id") as string) : undefined,
+      location: locationValue,
+      barRating: ratingValue,
+      drink: drinkValue,
+      drinkRating: drinkRatingValue,
+      review: reviewValue,
+    };
+  
+    try {
+      const method = inputInfo.id ? "PUT" : "POST"; // Use PUT for updates, POST for new reviews
+      const response = await fetch("/api/reviews", {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(inputInfo),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Failed to submit the review.");
+      }
+  
+      const data = await response.json();
+      console.log("Server Response:", data);
+  
+      alert(inputInfo.id ? "Review updated successfully!" : "Review submitted successfully!");
+      window.location.href = "/authview"; // Redirect to the reviews page
+    } catch (error) {
+      console.error("Error submitting review:", error);
+      alert("Failed to submit the review. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+  */
 
   return (
     <>
@@ -168,4 +211,3 @@ export default function Additem() {
     </>
   );
 }
-
