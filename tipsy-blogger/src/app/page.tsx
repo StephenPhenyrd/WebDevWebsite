@@ -18,8 +18,10 @@ export default function Home() {
     <div className="background">
       {/* Header component with navigation buttons */}
       <Header>
-        <Button><Link href="/authview">Login</Link></Button>
-        <Button><Link href="/additem">Sign Up</Link></Button>
+        {/* <Button><Link href="/authview">Login</Link></Button> */}
+        <Button><Link href="/login">Login</Link></Button>
+
+        <Button><Link href="/signup">Sign Up</Link></Button>
       </Header>
       <IntroCard />
 
