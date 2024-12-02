@@ -1,15 +1,20 @@
 .card {
     background-color: #F4EFE6;
-    border: solid #C8D9E6 5px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 280px;
-    height: 280px;
-    margin-left: 100px;
-    color:black;
-    border-radius: 25px;
-    margin-top: 100px;
-    padding-top: 20px;
+    border: 3px solid black;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: auto;
+    margin: 20px auto;
+    color: #333333;
+    border-radius: 15px;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+.card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
 
 
