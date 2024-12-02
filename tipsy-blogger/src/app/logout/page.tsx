@@ -14,7 +14,7 @@ export default function LoginPage() {
     e.preventDefault();
     setError(''); 
 
-    const res = signOut();
+    const res = await signOut();
     router.push('/login');
   }
   
