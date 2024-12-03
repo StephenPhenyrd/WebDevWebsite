@@ -108,6 +108,7 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import Link from "next/link";
 import "./addpage.css";
+import Review from "../models/Review";
 
 export default function Additem() {
   const searchParams = useSearchParams();
@@ -155,19 +156,20 @@ export default function Additem() {
     setLoading(true);
   
     const inputInfo = {
-      id: searchParams.get("id") ? parseInt(searchParams.get("id") as string) : undefined,
-      location: locationValue,
-      barRating: ratingValue,
-      drink: drinkValue,
-      drinkRating: drinkRatingValue,
-      review: reviewValue,
+      id: searchParams.get("id") || undefined, // Optional for updates
+      location: locationValue.trim(),
+      barRating: parseFloat(ratingValue), // Convert string to number
+      drinkChoice: drinkValue.trim(),
+      drinkRating: parseFloat(drinkRatingValue), // Convert string to number
+      review: reviewValue.trim(),
     };
   
+    console.log("Submitting Review Data:", JSON.stringify(inputInfo, null, 2));
+  
     const method = inputInfo.id ? "PUT" : "POST"; // Use PUT for updates, POST for new reviews
-    console.log("Submitting Review:", inputInfo, "Method:", method);
   
     try {
-      const response = await fetch("../api/reviews", {
+      const response = await fetch("/api/reviews", {
         method,
         headers: {
           "Content-Type": "application/json",
@@ -182,7 +184,7 @@ export default function Additem() {
       const data = await response.json();
       console.log("Server Response:", data);
   
-      // Reset the form or redirect
+      // Reset the form
       setDrinkValue("");
       setLocationValue("");
       setRatingValue("");
