@@ -26,6 +26,30 @@ export default function Item(props: DummyProps) {
     );
   };
 
+  const handleDeleteClick = async () => {
+    try {      
+
+      const response = await fetch(`/api/reviews`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ _id: props.id }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete the review.");
+      }
+
+      const result = await response.json();
+      console.log("Deleted review:", result);
+      router.push('/');
+      router.push('/authview');
+    } catch (error) {
+      console.error("Error deleting the review:", error);
+    }
+  };
+
   return (
     <div className={styles.card}>
       <h3>
@@ -54,7 +78,7 @@ export default function Item(props: DummyProps) {
           ✏️ Edit
         </button>
         {/* Delete Button */}
-        <button className={styles.button} onClick={() => props.onDelete(props.id)}>
+        <button className={styles.button} onClick={handleDeleteClick}>
           🗑️ Delete
         </button>
       </div>
