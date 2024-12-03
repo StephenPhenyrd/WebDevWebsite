@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { ObjectId } from "mongodb";
-import clientPromise, { connectMongoDB } from "../../lib/mongodb"; // Adjust path to your MongoDB connection setup
+import clientPromise, { connectMongoDB } from "../../lib/mongodb"; 
+import Review from "../../models/Review";// Adjust path to your MongoDB connection setup
 
 
 await connectMongoDB();
