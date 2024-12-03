@@ -21,7 +21,7 @@ export default function Home() {
         {/* <Button><Link href="/authview">Login</Link></Button> */}
         <Button><Link href="/login">Login</Link></Button>
 
-        <Button><Link href="/additem">Sign Up</Link></Button>
+        <Button><Link href="/signup">Sign Up</Link></Button>
       </Header>
       <IntroCard />
 

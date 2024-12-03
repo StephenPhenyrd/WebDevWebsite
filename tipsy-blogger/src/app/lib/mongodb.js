@@ -1,26 +1,46 @@
-import { MongoClient } from "mongodb";
+/*
+import mongoose from "mongoose"
 
-const uri = process.env.MONGODB_URI; // Use environment variable for connection URI
-const options = {};
+export const connectMongoDB = async () => {
 
-let client;
-let clientPromise;
+    try {
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log('Database connected successfully!');
+      } catch (error) {
+        console.error('Database connection failed:', error);
+      }
+    
 
-if (!process.env.MONGODB_URI) {
-  throw new Error("Please add your MongoDB URI to .env.local");
+}
+*/
+
+import mongoose from "mongoose";
+
+const uri = process.env.MONGODB_URI; // Ensure this is set in your .env.local
+if (!uri) {
+  throw new Error("Please define the MONGODB_URI environment variable in .env.local");
 }
 
-if (process.env.NODE_ENV === "development") {
-  // In development mode, use a global variable to preserve the client across hot reloads
-  if (!global._mongoClientPromise) {
-    client = new MongoClient(uri, options);
-    global._mongoClientPromise = client.connect();
+// Global variable to maintain connection state during hot reloads in development
+let isConnected = false;
+
+export const connectMongoDB = async () => {
+  if (isConnected) {
+    console.log("Using existing database connection");
+    return;
   }
-  clientPromise = global._mongoClientPromise;
-} else {
-  // In production mode, create a new client
-  client = new MongoClient(uri, options);
-  clientPromise = client.connect();
-}
 
-export default clientPromise;
+  try {
+    const connection = await mongoose.connect(uri, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    isConnected = connection.connections[0].readyState === 1;
+    console.log("Database connected successfully!");
+  } catch (error) {
+    console.error("Database connection failed:", error);
+    throw error;
+  }
+};
+
+

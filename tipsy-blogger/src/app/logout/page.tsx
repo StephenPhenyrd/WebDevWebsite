@@ -14,28 +14,10 @@ export default function LoginPage() {
     e.preventDefault();
     setError(''); 
 
-    try {
-        const res = await signIn('credentials', {
-            redirect: false,
-            username, 
-            password, 
-        });
-          
-      console.log("here, res" , res)
-      if (res?.error) {
-        setError(res.error || 'Invalid login credentials.');
-      } else {
-        router.push('/authview');
-      }
-    } catch (error) {
-      setError('An unexpected error occurred. Please try again.');
-    }
-  };
-
-  const handleRegisterRedirect = () => {
-    router.push('/signup');
-  };
-
+    const res = await signOut();
+    router.push('/login');
+  }
+  
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f4f4f9' }}>
       <div style={{ width: '300px', padding: '20px', borderRadius: '8px', background: '#fff', boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)' }}>
@@ -107,7 +89,7 @@ export default function LoginPage() {
         <p style={{ textAlign: 'center', fontSize: '14px', color: '#333' }}>
           Don’t have an account?{' '}
           <span
-            onClick={handleRegisterRedirect}
+            onClick={handleLogin}
             style={{ color: '#0070f3', cursor: 'pointer', textDecoration: 'underline' }}
           >
             Register now
